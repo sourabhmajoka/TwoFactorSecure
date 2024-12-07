@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+
+# Virtual Environment
+venv/
+ENV/
+
+# Flask-specific
+instance/
+*.db
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Pytest
+htmlcov/
+.cache/
+.pytest_cache/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Deployment Files
+*.bak
+*.backup
+*.swp
+
+# Node Modules (if any frontend dependencies are used)
+node_modules/
+
+# Secret Keys
+.env
+
+# Compiled Files
+*.o
+*.so
+*.dll

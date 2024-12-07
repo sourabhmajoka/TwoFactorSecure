@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #2575fc;
+    text-align: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
+    width: 100%;
+    padding: 25px 30px;
+    box-sizing: border-box;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input {
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: none;
+    background-color: #2575fc;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #1a5bb5;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.message.error {
+    color: #d8000c;
+}
+
+.message.info {
+    background-color: #e6f7ff;
+    color: #00529b;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.password-criteria {
+    margin-top: -10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.password-criteria ul {
+    padding-left: 20px;
+}
+
+.password-criteria li {
+    list-style: disc;
+    margin-bottom: 5px;
+}
+
+.criteria {
+    color: #ff0000;
+}
+
+.fulfilled {
+    color: #28a745;
+}
+
+.unfulfilled {
+    color: #ff0000;
+}
+
+input[name="confirm_password"]:disabled {
+    background-color: #f0f0f0;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+input[name="confirm_password"]:not(:disabled) {
+    background-color: #ffffff;
+    color: #333;
+}
