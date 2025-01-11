@@ -11,8 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
-# port = int(os.environ.get("PcORT", 5000))
-# app.run(host="0.0.0.0", port=port)
+port = int(os.getenv("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL").replace("mysql://", "mysql+pymysql://")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
