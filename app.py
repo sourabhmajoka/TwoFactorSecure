@@ -23,6 +23,8 @@ app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
 db = SQLAlchemy(app)
 mail = Mail(app)
 
+print("DB_URL:", app.config['SQLALCHEMY_DATABASE_URI'])
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
