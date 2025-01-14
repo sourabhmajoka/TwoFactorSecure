@@ -24,13 +24,19 @@ db = SQLAlchemy(app)
 mail = Mail(app)
 
 class User(db.Model):
+    __tablename__ = "user"
+
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
 
 def send_email(email, otp):
     """Send OTP via email."""
-    msg = Message("Your OTP Code", sender="majoka193@gmail.com", recipients=[email])
+    msg = Message("Your OTP Code", sender=app.config['MAIL_USERNAME'], recipients=[email])
     msg.body = f"Your OTP is: {otp}"
     mail.send(msg)
 
