@@ -11,7 +11,11 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL").replace("mysql://", "mysql+pymysql://")
+db_url = os.getenv("DB_URL")
+if db_url.startswith("mysql://"):
+    db_url = db_url.replace("mysql://", "mysql+pymysql://")
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -139,11 +143,14 @@ def verify_signup():
         flash("Invalid OTP!", "error")
         return redirect("/signup")
 
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 def home():
     if not session.get("authenticated"):
         return redirect("/")
-    return render_template("home.html")
+    
+    email = session.get("email")
+    
+    return render_template("home.html", username=email.split('@')[0])
 
 @app.route("/logout")
 def logout():
@@ -152,8 +159,7 @@ def logout():
     return redirect("/")
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
-with app.app_context():
-    db.create_all()
